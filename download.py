@@ -128,12 +128,17 @@ def main():
         domain = 'test'
 
     # Include Notes
-    if include_notes == 'False'
-        query += "AND FileExtension != 'snote'"
+    if include_notes == 'False':
+        query += " AND FileExtension != 'snote'"
+        content_document_query += " AND ContentDocument.FileExtension != 'snote'"
 
     # File Extensions
-    if file_extensions != 'All'
-        query += "AND FileExtension in ({0})".format(file_extensions)
+    if file_extensions != 'All':
+        if include_notes == 'True': 
+            file_extensions += ",'snote'"
+
+        query += " AND FileExtension in ({0})".format(file_extensions)
+        content_document_query += " AND ContentDocument.FileExtension in ({0})".format(file_extensions)
 
     # Output
     logging.info('Export ContentVersion (Files) from Salesforce')
