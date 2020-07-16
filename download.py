@@ -215,7 +215,7 @@ def main():
     # Get Content Document Links
     logging.info("Querying to get Content Document Links...")
     if content_document_links_query:
-        get_content_document_links(sf=sf, output_directory=output, query=content_document_links_query, valid_content_document_ids=valid_content_document_ids)
+        get_content_document_links(sf=sf, output_directory=output, query=content_document_links_query, valid_content_document_ids=valid_content_document_ids, batch_size=batch_size)
     logging.info("Links file created Successfully")
 
     # Begin Downloads
