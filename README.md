@@ -25,6 +25,7 @@ We also improve this README file.
         - _batch_size_ = The size of the batch to process files. Default _100_.
         - _file_extensions_= The file extensions of the files to retrieve. Comma separated value with single quotes e.g. 'pdf','jpg','gif'. Defaul _All_.
         - _include_notes_ = If we want to include the Enhanced Notes or not _(False/True)_. Default _False_.
+        - _custom_where_ = Custom WHERE to add to the Files Query (e.g. `AND (NOT Title LIKE 'image0%')`)
         - _loglevel_ = Level of Python logging. Allowed values [here](https://docs.python.org/3/library/logging.html#logging-levels). Default _INFO_.
 
 ## Usage

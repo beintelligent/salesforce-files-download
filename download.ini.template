@@ -7,4 +7,5 @@ output_dir = C:\Files_Extract\
 batch_size = 100
 file_extensions= All
 include_notes = False
+custom_where = 
 loglevel = INFO
