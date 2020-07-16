@@ -110,6 +110,8 @@ def main():
     token = config['salesforce']['security_token']
     batch_size = int(config['salesforce']['batch_size'])
     is_sandbox = config['salesforce']['connect_to_sandbox']
+    include_notes = config['salesforce']['include_notes']
+    file_extensions = config['salesforce']['file_extensions']
     loglevel = logging.getLevelName(config['salesforce']['loglevel'])
     logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s', level=loglevel)
 
@@ -118,10 +120,20 @@ def main():
                              'WHERE LinkedEntityId in ({0})'.format(args.query)
     output = config['salesforce']['output_dir']
     query = "SELECT ContentDocumentId, Title, VersionData, FileExtension FROM ContentVersion " \
-            "WHERE IsLatest = True AND FileExtension != 'snote'"
+            "WHERE IsLatest = True"
     domain = None
+    
+    # Sandbox
     if is_sandbox == 'True':
         domain = 'test'
+
+    # Include Notes
+    if include_notes == 'False'
+        query += "AND FileExtension != 'snote'"
+
+    # File Extensions
+    if file_extensions != 'All'
+        query += "AND FileExtension in ({0})".format(file_extensions)
 
     # Output
     logging.info('Export ContentVersion (Files) from Salesforce')
