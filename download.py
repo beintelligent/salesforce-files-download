@@ -13,7 +13,7 @@ def split_into_batches(items, batch_size):
 
 def create_filename(title, file_extension, content_document_id, output_directory):
     # Create filename
-    bad_chars = [';', ':', '!', "*", '/', '\\']
+    bad_chars = [';', ':', '!', "*", '/', '\\', '>', '<', '"', '?', '|']
     clean_title = filter(lambda i: i not in bad_chars, title)
     clean_title = ''.join(list(clean_title))
     filename = "{0}{1} {2}.{3}".format(output_directory, content_document_id, clean_title, file_extension)
